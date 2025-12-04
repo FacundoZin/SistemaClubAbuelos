@@ -1,0 +1,54 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+# Exclude if you use packages folder:
+# !packages/build/
+
+# Logs
+*.log
+
+# Auto-generated files
+Generated/
+wwwroot/lib/
+
+# ASP.NET secret manager
+secrets.json
+
+# Environment variables
+.env
+
+# Publish output
+publish/
+
+# Rider
+.idea/
+
+# Dotnet tools local manifest
+.dotnet-tools.json
+
+# System
+Thumbs.db
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+
+# Terraform (si llegás a usar)
+*.tfstate
+*.tfstate.backup
