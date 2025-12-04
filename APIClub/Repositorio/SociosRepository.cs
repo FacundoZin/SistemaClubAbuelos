@@ -31,5 +31,23 @@ namespace APIClub.Repositorio
         {
             return await _Dbcontext.Socios.AnyAsync(s => s.Dni == dni);
         }
+
+        public async Task<bool> SocioExistsForUpdate(string dni, int id)
+        {
+            return await _Dbcontext.Socios.AnyAsync(s => s.Dni == dni && s.Id != id);
+        }
+
+        public async Task<Socio?> GetSocioById(int id)
+        {
+            return await _Dbcontext.Socios
+                .FirstOrDefaultAsync(s => s.Id == id);
+                
+        }
+
+        public async Task UpdateSocio(Socio socio)
+        {
+           _Dbcontext.Socios.Update(socio); 
+             await _Dbcontext.SaveChangesAsync();
+        }
     }
 }

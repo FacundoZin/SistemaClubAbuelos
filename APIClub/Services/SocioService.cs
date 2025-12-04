@@ -71,6 +71,53 @@ namespace APIClub.Services
             };
 
             return Result<PreviewSocioDto>.Exito(dto);
+
+
+        }
+
+        public async Task<Result<object>> UpdateSocio(int id, CreateSocioDto dto)
+        {
+            if (id <= 0)
+            {
+                return Result<object>.Error("El ID proporcionado no es válido.", 400);
+            }
+
+            var socio = await _SocioRepository.GetSocioById(id);
+
+            if (socio is null)
+            {
+                return Result<object>.Error("No se encontró un socio con ese ID.", 404);
+            }
+
+            // Validar que el nuevo DNI no esté asignado a otro socio
+            if (socio.Dni != dto.Dni)
+            {
+                var dniExists = await _SocioRepository.SocioExists(dto.Dni);
+                if (dniExists)
+                {
+                    return Result<object>.Error("Ya existe un socio con ese DNI.", 400);
+                }
+            }
+
+            // Actualizar propiedades
+            socio.Nombre = dto.Nombre;
+            socio.Apellido = dto.Apellido;
+            socio.Dni = dto.Dni;
+            socio.Telefono = dto.Telefono;
+            socio.Direcccion = dto.Direcccion;
+            socio.Lote = dto.Lote;
+            socio.Localidad = dto.Localidad;
+
+            await _SocioRepository.UpdateSocio(socio);
+
+            return Result<object>.Exito(new
+            {
+                Message = "Socio actualizado correctamente.",
+                SocioId = socio.Id
+            });
+        
+
         }
     }
 }
+

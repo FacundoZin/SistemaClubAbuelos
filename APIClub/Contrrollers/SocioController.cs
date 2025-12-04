@@ -44,5 +44,19 @@ namespace APIClub.Contrrollers
             // Si todo salió bien, devolvés el DTO con código 200
             return Ok(result.Data);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSocio(int id, [FromBody] CreateSocioDto dto)
+        {
+            var result = await _SocioService.UpdateSocio(id, dto);
+
+            if (result.Exit != true)
+            {
+                return StatusCode(result.Errorcode, result.Errormessage);
+            }
+
+            return Ok(result.Data);
+        }
+
     }
 }
