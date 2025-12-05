@@ -16,5 +16,7 @@ namespace APIClub.Models
         // Relaciones
         public int SocioId { get; set; }
         public Socio? Socio { get; set; }
+
     }
+ 
 }

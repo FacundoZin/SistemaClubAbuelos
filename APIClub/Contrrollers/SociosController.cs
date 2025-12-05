@@ -71,6 +71,22 @@ namespace APIClub.Contrrollers
             return Ok(result.Data);
         }
 
+        [HttpGet("{socioId}/cuotas")]
+        public async Task<IActionResult> GetHistorialCuotas(int socioId)
+        {
+            var resultado = await _SocioService.GetHistorialCuotas(socioId);
+
+            if (!resultado.Exit)
+                return StatusCode(resultado.Errorcode, new
+                {
+                    mensaje = resultado.Errormessage,
+                });
+
+            return Ok(new
+            {
+                data = resultado.Data
+            });
+        }
 
     }
 }
