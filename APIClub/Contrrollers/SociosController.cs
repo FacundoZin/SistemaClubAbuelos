@@ -58,5 +58,17 @@ namespace APIClub.Contrrollers
             return Ok(result.Data);
         }
 
+        [HttpGet("deudores")]
+        public async Task<IActionResult> GetSociosDeudores()
+        {
+            var result = await _SocioService.GetSociosDeudores();
+
+            if (result.Exit != true)
+            {
+                return StatusCode(result.Errorcode, result.Errormessage);
+            }
+
+            return Ok(result.Data);
+        }
     }
 }

@@ -75,6 +75,32 @@ namespace APIClub.Services
 
         }
 
+        public async Task<Result<List<PreviewSocioDto>>> GetSociosDeudores()
+        {
+            // Obtener fecha actual
+            var fechaPagoActual = DateOnly.FromDateTime(DateTime.Now);
+            int anioActual = fechaPagoActual.Year;
+            int semestreActual = fechaPagoActual.Month <= 6 ? 1 : 2;
+
+            //obtengo los socios que no pagaron la cuota
+            var socios = await _SocioRepository.GetSociosDeudores(anioActual, semestreActual);
+
+            //mapeo los socios a el dto que voy a devolver
+            var dto = socios.Select(s => new PreviewSocioDto
+            {
+                Id = s.Id,
+                Nombre = s.Nombre,
+                Apellido = s.Apellido,
+                Dni = s.Dni,
+                Telefono = s.Telefono,
+                Direcccion = s.Direcccion,
+                Lote = s.Lote,
+                Localidad = s.Localidad,
+            }).ToList();
+
+            return Result<List<PreviewSocioDto>>.Exito(dto);
+        }
+
         public async Task<Result<object>> UpdateSocio(int id, CreateSocioDto dto)
         {
             if (id <= 0)

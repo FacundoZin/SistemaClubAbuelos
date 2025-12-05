@@ -9,11 +9,11 @@ namespace APIClub.Repositorio
     {
         private readonly AppDbcontext _Dbcontext;
 
-        public SociosRepository(AppDbcontext dbcontext) 
+        public SociosRepository(AppDbcontext dbcontext)
         {
             _Dbcontext = dbcontext;
         }
-        
+
         public async Task cargarSocio(Socio socio)
         {
             _Dbcontext.Socios.Add(socio);
@@ -41,18 +41,27 @@ namespace APIClub.Repositorio
         {
             return await _Dbcontext.Socios
                 .FirstOrDefaultAsync(s => s.Id == id);
-                
+
         }
 
         public async Task UpdateSocio(Socio socio)
         {
-           _Dbcontext.Socios.Update(socio); 
-             await _Dbcontext.SaveChangesAsync();
+            _Dbcontext.Socios.Update(socio);
+            await _Dbcontext.SaveChangesAsync();
         }
 
         public Task<Socio?> GetSocioByIdWithCuotas(int id)
         {
             return _Dbcontext.Socios.Include(s => s.HistorialCuotas).FirstOrDefaultAsync(s => s.Id == id);
+        }
+
+        public async Task<List<Socio>> GetSociosDeudores(int anioActual, int semestreActual)
+        {
+            var deudores = await _Dbcontext.Socios
+                .Where(s => !s.HistorialCuotas.Any(c => c.Anio == anioActual && c.Semestre == semestreActual))
+                .ToListAsync();
+
+            return deudores;
         }
     }
 }
