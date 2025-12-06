@@ -12,5 +12,7 @@
         public string? Localidad { get; set; }
         public DateOnly? FechaAsociacion { get; set; }
 
+        public bool AdeudaCuotas { get; set; }
+
     }
 }

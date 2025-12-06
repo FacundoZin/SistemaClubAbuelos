@@ -39,7 +39,7 @@ namespace APIClub.Repositorio
 
         public async Task<Socio?> GetSocioById(int id)
         {
-            return await _Dbcontext.Socios
+            return await _Dbcontext.Socios.Include(s => s.HistorialCuotas)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
         }

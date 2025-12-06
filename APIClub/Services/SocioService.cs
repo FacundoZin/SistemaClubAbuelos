@@ -62,6 +62,15 @@ namespace APIClub.Services
                 return Result<PreviewSocioDto>.Error("No se encontró un socio con ese DNI.", 404);
             }
 
+            var fechaPagoActual = DateOnly.FromDateTime(DateTime.Now);
+            int anioActual = fechaPagoActual.Year;
+            int semestreActual = fechaPagoActual.Month <= 6 ? 1 : 2;
+
+            bool debeCuota = false;
+
+            if (!socio.HistorialCuotas.Any(c => c.Anio == anioActual && c.Semestre == semestreActual))
+                debeCuota = true;
+
             var dto = new PreviewSocioDto
             {
                 Id = socio.Id,
@@ -71,12 +80,11 @@ namespace APIClub.Services
                 Telefono = socio.Telefono,
                 Direcccion = socio.Direcccion,
                 Lote = socio.Lote,
-                Localidad = socio.Localidad
+                Localidad = socio.Localidad,
+                AdeudaCuotas = debeCuota,
             };
 
             return Result<PreviewSocioDto>.Exito(dto);
-
-
         }
 
         public async Task<Result<List<PreviewSocioDto>>> GetSociosDeudores()
@@ -100,6 +108,7 @@ namespace APIClub.Services
                 Direcccion = s.Direcccion,
                 Lote = s.Lote,
                 Localidad = s.Localidad,
+                AdeudaCuotas = true,
             }).ToList();
 
             return Result<List<PreviewSocioDto>>.Exito(dto);
