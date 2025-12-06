@@ -16,11 +16,13 @@ builder.Services.AddDbContext<AppDbcontext>(options =>
 
 //registrar servicios
 builder.Services.AddScoped<ISocioService,SocioService>();
-builder.Services.AddScoped<ICuotaService, CuotasService>();
+builder.Services.AddScoped<ICuotaService,CuotasService>();
+builder.Services.AddScoped<ISalonesServices,SalonesServices>();
 
 // registrar repositorios
 builder.Services.AddScoped<ISocioRepository,SociosRepository>();
 builder.Services.AddScoped<ICuotaRepository,CuotaRepository>();
+builder.Services.AddScoped<IReservasRepository,ReservasRepository>();
 
 
 // Add services to the container.

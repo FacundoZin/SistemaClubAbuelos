@@ -1,6 +1,6 @@
 ﻿namespace APIClub.Models
 {
-    public class AlquilerSalon
+    public class ReservaSalon
     {
         public int Id { get; set; }
         public DateOnly FechaAlquiler { get; set; }

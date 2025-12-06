@@ -11,7 +11,7 @@ namespace APIClub.Data
         {
         }
 
-        public DbSet<AlquilerSalon> AlquileresSalones { get; set; }
+        public DbSet<ReservaSalon> AlquileresSalones { get; set; }
         public DbSet<Cuota> Cuotas { get; set; }
         public DbSet<Salon> Salones { get; set; }
         public DbSet<Socio> Socios { get; set; }
@@ -27,18 +27,18 @@ namespace APIClub.Data
                 .WithOne(c => c.Socio)
                 .HasForeignKey(c => c.SocioId);
 
-            modelBuilder.Entity<AlquilerSalon>()
+            modelBuilder.Entity<ReservaSalon>()
                 .HasOne(a => a.Socio)
                 .WithMany()  // suponiendo que no definiste collection ahí
                 .HasForeignKey(a => a.SocioId);
 
-            modelBuilder.Entity<AlquilerSalon>()
+            modelBuilder.Entity<ReservaSalon>()
                 .HasOne(a => a.Salon)
                 .WithMany()
                 .HasForeignKey(a => a.SalonId);
 
             // Si querés podés mapear fecha como DateOnly (EF Core 6+ lo soporta con conversores)
-            modelBuilder.Entity<AlquilerSalon>()
+            modelBuilder.Entity<ReservaSalon>()
                 .Property(a => a.FechaAlquiler)
                 .HasConversion(
                     v => v.ToDateTime(new TimeOnly()),
