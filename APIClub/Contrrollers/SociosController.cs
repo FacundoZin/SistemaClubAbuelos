@@ -58,6 +58,20 @@ namespace APIClub.Contrrollers
             return Ok(result.Data);
         }
 
+
+        [HttpGet("deudores")]
+        public async Task<IActionResult> GetSociosDeudores()
+        {
+            var result = await _SocioService.GetSociosDeudores();
+
+            if (result.Exit != true)
+            {
+                return StatusCode(result.Errorcode, result.Errormessage);
+            }
+
+            return Ok(result.Data);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveSocio(int id)
         {
@@ -71,22 +85,19 @@ namespace APIClub.Contrrollers
             return Ok(result.Data);
         }
 
+
         [HttpGet("{socioId}/cuotas")]
         public async Task<IActionResult> GetHistorialCuotas(int socioId)
         {
-            var resultado = await _SocioService.GetHistorialCuotas(socioId);
+            var result = await _SocioService.GetHistorialCuotas(socioId);
 
-            if (!resultado.Exit)
-                return StatusCode(resultado.Errorcode, new
+            if (!result.Exit)
+                return StatusCode(result.Errorcode, new
                 {
-                    mensaje = resultado.Errormessage,
+                    mensaje = result.Errormessage,
                 });
 
-            return Ok(new
-            {
-                data = resultado.Data
-            });
+            return Ok(result.Data);
         }
-
     }
 }
