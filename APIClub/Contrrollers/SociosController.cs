@@ -58,6 +58,7 @@ namespace APIClub.Contrrollers
             return Ok(result.Data);
         }
 
+
         [HttpGet("deudores")]
         public async Task<IActionResult> GetSociosDeudores()
         {
@@ -67,6 +68,34 @@ namespace APIClub.Contrrollers
             {
                 return StatusCode(result.Errorcode, result.Errormessage);
             }
+
+            return Ok(result.Data);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveSocio(int id)
+        {
+            var result = await _SocioService.RemoveSocio(id);
+
+            if (!result.Exit)
+            {
+                return StatusCode(result.Errorcode, result.Errormessage);
+            }
+
+            return Ok(result.Data);
+        }
+
+
+        [HttpGet("{socioId}/cuotas")]
+        public async Task<IActionResult> GetHistorialCuotas(int socioId)
+        {
+            var result = await _SocioService.GetHistorialCuotas(socioId);
+
+            if (!result.Exit)
+                return StatusCode(result.Errorcode, new
+                {
+                    mensaje = result.Errormessage,
+                });
 
             return Ok(result.Data);
         }

@@ -7,5 +7,6 @@ namespace APIClub.Interfaces.Services
     {
         Task<Result<object>> RegistrarPagoCuoata(int idSocio, FormasDePago formaPago);
         Task<Result<object>> ActualizarValorCuota(decimal nuevoValor);
+       
     }
 }

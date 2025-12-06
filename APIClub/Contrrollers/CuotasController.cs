@@ -11,8 +11,8 @@ namespace APIClub.Contrrollers
     public class CuotasController : ControllerBase
     {
         private readonly ICuotaService _CuotasService;
-        public CuotasController(ICuotaService cuotaService) 
-        { 
+        public CuotasController(ICuotaService cuotaService)
+        {
             _CuotasService = cuotaService;
         }
 
@@ -33,5 +33,7 @@ namespace APIClub.Contrrollers
 
             return Ok(new { data = result.Data });
         }
+
+       
     }
 }

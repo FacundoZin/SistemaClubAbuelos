@@ -7,4 +7,6 @@ namespace APIClub.Dtos.Cuota
         public int IdSocio { get; set; }
         public FormasDePago FormaPago { get; set; }
     }
+    
+
 }
