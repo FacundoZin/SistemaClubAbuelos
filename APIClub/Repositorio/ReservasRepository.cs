@@ -45,6 +45,7 @@ namespace APIClub.Repositorio
             return await _Context.ReservasSalones
                 .Where(a => a.SalonId == IdSalon)
                 .Include(s => s.Socio)
+                .OrderBy(a => a.FechaAlquiler)
                 .AsNoTracking()
                 .ToListAsync();
         }
