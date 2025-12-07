@@ -8,14 +8,8 @@
 
 	<ItemGroup>
 		<!-- Excluí la base -->
-		<DotNetWatchItems Remove="club.db" />
-		<DotNetWatchItems Remove="club.db-wal" />
-		<DotNetWatchItems Remove="club.db-shm" />
 
 		<!-- Excluí con ruta absoluta -->
-		<DotNetWatchItems Remove="D:\Repositorio\SistemaClubAbuelos\APIClub\club.db" />
-		<DotNetWatchItems Remove="D:\Repositorio\SistemaClubAbuelos\APIClub\club.db-wal" />
-		<DotNetWatchItems Remove="D:\Repositorio\SistemaClubAbuelos\APIClub\club.db-shm" />
 
 		<!-- Excluí por patrón para cubrir cualquier ubicación relativa -->
 		<DotNetWatchItems Remove="**/club.db" />
