@@ -11,5 +11,6 @@ namespace APIClub.Interfaces.Services
         Task<Result<InfoReservaCompletaDto?>> GetReservaByFechaAndSalon(DateOnly fecha, int salonId);
         Task<Result<InfoReservaCompletaDto?>> GetReservaById(int reservaId);
         Task<Result<object?>> RegistrarReservaSalon(CreteReservaSalonDto dto);
+        Task<Result<object?>> CancelarReservas(int idReserva);
     }
 }

@@ -8,11 +8,11 @@ namespace APIClub.Contrrollers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReservasController : ControllerBase
+    public class SalonController : ControllerBase
     {
         private readonly ISalonesServices _SalonesServices;
 
-        public ReservasController (ISalonesServices salonesServices)
+        public SalonController (ISalonesServices salonesServices)
         {
             _SalonesServices = salonesServices;
         }
@@ -47,10 +47,10 @@ namespace APIClub.Contrrollers
             if (!result.Exit)
                 return StatusCode(result.Errorcode, result.Errormessage);
 
-            return Ok(result);
+            return Ok(result.Data);
         }
 
-        [HttpGet("reserva/{reservaId}")]
+        [HttpGet("reservas/{reservaId}")]
         public async Task<IActionResult> GetReservaById(int reservaId)
         {
             var result = await _SalonesServices.GetReservaById(reservaId);
@@ -58,7 +58,7 @@ namespace APIClub.Contrrollers
             if (!result.Exit)
                 return StatusCode(result.Errorcode, result.Errormessage);
 
-            return Ok(result);
+            return Ok(result.Data);
         }
 
         [HttpPost("reserva")]
@@ -75,6 +75,17 @@ namespace APIClub.Contrrollers
                 return StatusCode(result.Errorcode, result);
 
             return Ok(result);
+        }
+
+
+        [HttpDelete("reserva/{reservaId}")]
+        public async Task<IActionResult> CancelarReserva(int reservaId)
+        {
+           var result = await _SalonesServices.CancelarReservas(reservaId);
+
+            if (!result.Exit) return StatusCode(result.Errorcode, result);
+
+           return NoContent();
         }
 
     }

@@ -4,7 +4,6 @@ using APIClub.Dtos.Reservas;
 using APIClub.Interfaces.Repository;
 using APIClub.Interfaces.Services;
 using APIClub.Models;
-using System.Security.Cryptography.X509Certificates;
 
 namespace APIClub.Services
 {
@@ -155,6 +154,15 @@ namespace APIClub.Services
                 mensaje = $"se creo exitosamente una reserva para el: {reserva.FechaAlquiler}" 
             };
             return Result<object?>.Exito(reservaCreada);
+        }
+
+        public async Task<Result<object?>> CancelarReservas(int idReserva)
+        {
+            var exit = await _ReservasRepository.BorrarReserva(idReserva);
+
+            if (!exit) return Result<object?>.Error("algo fallo al borrar la reserva en la db", 500);
+
+            return Result<object?>.Exito(null);
         }
     }
 }

@@ -16,16 +16,14 @@ namespace APIClub.Repositorio
 
         public async Task<bool> BorrarReserva(int idReserva)
         {
-            var reserva = await _Context.ReservasSalones.FirstOrDefaultAsync(r => r.Id == idReserva);
+            var reserva = await _Context.ReservasSalones.FindAsync(idReserva);
 
-            if(reserva == null) return false;
-
-            if (await _Context.SaveChangesAsync() == 0)
-            {
+            if (reserva == null)
                 return false;
-            }
 
-            return true;
+            _Context.ReservasSalones.Remove(reserva);
+
+            return await _Context.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> CrearReserva(ReservaSalon reserva)
@@ -55,6 +53,7 @@ namespace APIClub.Repositorio
             return await _Context.ReservasSalones
                 .Include(r => r.Salon)
                 .Include (s => s.Socio)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(r => r.SalonId == IdSalon && r.FechaAlquiler == fehca);
         }
 
