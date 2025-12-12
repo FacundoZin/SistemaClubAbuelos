@@ -26,7 +26,7 @@ namespace APIClub.Contrrollers
         [HttpPost("pagarCuota")]
         public async Task<IActionResult> RegistrarCuota([FromBody] RegistCuotaRequest request)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

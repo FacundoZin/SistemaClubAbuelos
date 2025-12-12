@@ -14,5 +14,6 @@ namespace APIClub.Interfaces.Repository
         Task<List<Socio>> GetSociosDeudores(int anioActual, int semestreActual);
         Task RemoveSocios(Socio socio);
         Task<List<Cuota>> GetCuotasSocioById(int socioId);
+        Task<List<Socio>> GetSociosDeudoresByLote(string lote, int anioActual, int semestreActual);
     }
 }

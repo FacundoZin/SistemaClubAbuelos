@@ -4,9 +4,7 @@ using APIClub.Dtos.Socios;
 using APIClub.Interfaces.Repository;
 using APIClub.Interfaces.Services;
 using APIClub.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
+
 
 namespace APIClub.Services
 {
@@ -209,11 +207,6 @@ namespace APIClub.Services
 
             return Result<List<PreviewCuotaDto>>.Exito(dto);
         }
-
-
-
-
-
     }
 }
 

@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbcontext>(options =>
 builder.Services.AddScoped<ISocioService,SocioService>();
 builder.Services.AddScoped<ICuotaService,CuotasService>();
 builder.Services.AddScoped<ISalonesServices,ReservasServices>();
+builder.Services.AddScoped<ICobranzasServices,CobranzasService>();
 
 // registrar repositorios
 builder.Services.AddScoped<ISocioRepository,SociosRepository>();

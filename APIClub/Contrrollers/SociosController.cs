@@ -19,7 +19,7 @@ namespace APIClub.Contrrollers
         [HttpPost]
         public async Task<IActionResult> CargarSocio([FromBody] CreateSocioDto dto)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

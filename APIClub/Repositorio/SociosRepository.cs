@@ -78,5 +78,14 @@ namespace APIClub.Repositorio
             .AsNoTracking()
             .ToListAsync();
         }
+
+        public async Task<List<Socio>> GetSociosDeudoresByLote(string lote, int anioActual, int semestreActual)
+        {
+            return await _Dbcontext.Socios.
+                Where(s => s.Lote == lote && !s.HistorialCuotas
+                .Any(c => c.Anio == anioActual && c.Semestre == semestreActual))
+                .AsNoTracking()
+                .ToListAsync();
+        }
     }
 }
