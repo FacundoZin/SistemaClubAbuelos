@@ -12,8 +12,7 @@ const router = createRouter({
     {
       path: '/socios',
       name: 'socios',
-      // component: () => import('../views/SociosView.vue'), // TODO: Create SociosView
-      component: () => import('../views/AboutView.vue'), // Placeholder for now
+      component: () => import('../views/SociosView.vue'),
     },
     {
       path: '/reservas',
