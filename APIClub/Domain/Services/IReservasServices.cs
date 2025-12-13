@@ -2,9 +2,9 @@
 using APIClub.Dtos.Alquiler;
 using APIClub.Dtos.Reservas;
 
-namespace APIClub.Interfaces.Services
+namespace APIClub.Domain.Services
 {
-    public interface ISalonesServices
+    public interface IReservasServices
     {
         Task<Result<List<PreviewReservaBySalonDto>>> GetReservasBySalon(int salonId);
         Task<Result<FechaDisponible>> GetDisponibilidadFecha(DateOnly fecha, int Idsalon);

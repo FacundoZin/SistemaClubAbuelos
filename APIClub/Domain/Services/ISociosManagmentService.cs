@@ -2,9 +2,9 @@
 using APIClub.Dtos.Cuota;
 using APIClub.Dtos.Socios;
 
-namespace APIClub.Interfaces.Services
+namespace APIClub.Domain.Services
 {
-    public interface ISocioService
+    public interface ISociosManagmentService
     {
         Task<Result<List<PreviewSocioDto>>> GetSociosDeudores();
         Task<Result<CreatedSocio>> cargarSocio(CreateSocioDto _dto);

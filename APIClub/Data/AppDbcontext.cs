@@ -1,5 +1,5 @@
-﻿using APIClub.Enums;
-using APIClub.Models;
+﻿using APIClub.Domain.Models;
+using APIClub.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 

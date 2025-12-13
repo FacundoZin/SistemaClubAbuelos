@@ -1,4 +1,4 @@
-﻿using APIClub.Interfaces.Services;
+﻿using APIClub.Domain.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,5 +1,5 @@
-﻿using APIClub.Dtos.Reservas;
-using APIClub.Interfaces.Services;
+﻿using APIClub.Domain.Services;
+using APIClub.Dtos.Reservas;
 using APIClub.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ namespace APIClub.Contrrollers
     [ApiController]
     public class SalonController : ControllerBase
     {
-        private readonly ISalonesServices _SalonesServices;
+        private readonly IReservasServices _SalonesServices;
 
-        public SalonController (ISalonesServices salonesServices)
+        public SalonController (IReservasServices salonesServices)
         {
             _SalonesServices = salonesServices;
         }

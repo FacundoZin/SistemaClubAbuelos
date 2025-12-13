@@ -1,6 +1,6 @@
 using APIClub.Data;
-using APIClub.Interfaces.Repository;
-using APIClub.Interfaces.Services;
+using APIClub.Domain.Interfaces.Repository;
+using APIClub.Domain.Services;
 using APIClub.Repositorio;
 using APIClub.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +15,9 @@ builder.Services.AddDbContext<AppDbcontext>(options =>
     options.UseSqlite(connectionString));
 
 //registrar servicios
-builder.Services.AddScoped<ISocioService,SocioService>();
-builder.Services.AddScoped<ICuotaService,CuotasService>();
-builder.Services.AddScoped<ISalonesServices,ReservasServices>();
+builder.Services.AddScoped<ISociosManagmentService,SociosManagmentService>();
+builder.Services.AddScoped<ICuotasService,CuotasService>();
+builder.Services.AddScoped<IReservasServices,ReservasServices>();
 builder.Services.AddScoped<ICobranzasServices,CobranzasService>();
 
 // registrar repositorios

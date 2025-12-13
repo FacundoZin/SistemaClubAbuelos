@@ -1,5 +1,5 @@
-﻿using APIClub.Dtos.Cuota;
-using APIClub.Interfaces.Services;
+﻿using APIClub.Domain.Services;
+using APIClub.Dtos.Cuota;
 using APIClub.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +10,8 @@ namespace APIClub.Contrrollers
     [ApiController]
     public class CuotasController : ControllerBase
     {
-        private readonly ICuotaService _CuotasService;
-        public CuotasController(ICuotaService cuotaService)
+        private readonly ICuotasService _CuotasService;
+        public CuotasController(ICuotasService cuotaService)
         {
             _CuotasService = cuotaService;
         }

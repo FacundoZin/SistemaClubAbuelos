@@ -1,17 +1,17 @@
 ﻿using APIClub.Common;
+using APIClub.Domain.Interfaces.Repository;
+using APIClub.Domain.Models;
+using APIClub.Domain.Services;
 using APIClub.Dtos.Cuota;
 using APIClub.Dtos.Socios;
-using APIClub.Interfaces.Repository;
-using APIClub.Interfaces.Services;
-using APIClub.Models;
 
 
 namespace APIClub.Services
 {
-    public class SocioService : ISocioService
+    public class SociosManagmentService : ISociosManagmentService
     {
         private readonly ISocioRepository _SocioRepository;
-        public SocioService(ISocioRepository socioRepository)
+        public SociosManagmentService(ISocioRepository socioRepository)
         {
             _SocioRepository = socioRepository;
         }

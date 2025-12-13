@@ -1,7 +1,7 @@
 ﻿using APIClub.Common;
 using APIClub.Dtos.Socios;
 
-namespace APIClub.Interfaces.Services
+namespace APIClub.Domain.Services
 {
     public interface ICobranzasServices
     {

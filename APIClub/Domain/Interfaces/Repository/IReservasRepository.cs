@@ -1,6 +1,6 @@
-﻿using APIClub.Models;
+﻿using APIClub.Domain.Models;
 
-namespace APIClub.Interfaces.Repository
+namespace APIClub.Domain.Interfaces.Repository
 {
     public interface IReservasRepository
     {

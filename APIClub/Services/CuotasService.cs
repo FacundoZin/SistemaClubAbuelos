@@ -1,14 +1,12 @@
 ﻿using APIClub.Common;
+using APIClub.Domain.Interfaces.Repository;
+using APIClub.Domain.Models;
+using APIClub.Domain.Services;
 using APIClub.Enums;
-using APIClub.Interfaces.Repository;
-using APIClub.Interfaces.Services;
-using APIClub.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace APIClub.Services
 {
-    public class CuotasService : ICuotaService
+    public class CuotasService : ICuotasService
     {
         private readonly ISocioRepository _SocioRepository;
         private readonly ICuotaRepository _CuotaRepository;

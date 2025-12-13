@@ -1,13 +1,13 @@
 ﻿using APIClub.Common;
+using APIClub.Domain.Interfaces.Repository;
+using APIClub.Domain.Models;
+using APIClub.Domain.Services;
 using APIClub.Dtos.Alquiler;
 using APIClub.Dtos.Reservas;
-using APIClub.Interfaces.Repository;
-using APIClub.Interfaces.Services;
-using APIClub.Models;
 
 namespace APIClub.Services
 {
-    public class ReservasServices : ISalonesServices
+    public class ReservasServices : IReservasServices
     {
         private readonly IReservasRepository _ReservasRepository;
         private readonly ISocioRepository _SocioRepository;

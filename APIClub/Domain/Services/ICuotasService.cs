@@ -1,9 +1,9 @@
 ﻿using APIClub.Common;
 using APIClub.Enums;
 
-namespace APIClub.Interfaces.Services
+namespace APIClub.Domain.Services
 {
-    public interface ICuotaService
+    public interface ICuotasService
     {
         Task<Result<object>> RegistrarPagoCuoata(int idSocio, FormasDePago formaPago);
         Task<Result<object>> ActualizarValorCuota(decimal nuevoValor);

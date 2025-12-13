@@ -1,5 +1,5 @@
-﻿using APIClub.Dtos.Socios;
-using APIClub.Interfaces.Services;
+﻿using APIClub.Domain.Services;
+using APIClub.Dtos.Socios;
 using APIClub.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +10,8 @@ namespace APIClub.Contrrollers
     [ApiController]
     public class SociosController : ControllerBase
     {
-        private readonly ISocioService _SocioService;
-        public SociosController(ISocioService socioService)
+        private readonly ISociosManagmentService _SocioService;
+        public SociosController(ISociosManagmentService socioService)
         {
             _SocioService = socioService;
         }

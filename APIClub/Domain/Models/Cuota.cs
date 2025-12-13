@@ -1,7 +1,6 @@
-﻿
-using APIClub.Enums;
+﻿using APIClub.Enums;
 
-namespace APIClub.Models
+namespace APIClub.Domain.Models
 {
     public class Cuota
     {

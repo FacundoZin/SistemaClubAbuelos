@@ -1,6 +1,6 @@
 ﻿using APIClub.Data;
-using APIClub.Interfaces.Repository;
-using APIClub.Models;
+using APIClub.Domain.Interfaces.Repository;
+using APIClub.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIClub.Repositorio
